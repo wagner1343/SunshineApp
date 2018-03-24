@@ -32,6 +32,7 @@ public class ForecastView extends AppCompatActivity implements Observer<Forecast
     Button buttonGetWeather;
     ConstraintLayout layout;
 
+
     ForecastViewModel viewModel;
     private String currentCityName;
 
