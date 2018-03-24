@@ -32,4 +32,7 @@ public interface ForecastDao {
 
     @Insert
     long insertForecast(ForecastEntity forecastEntity);
+
+    @Query("DELETE FROM forecast")
+    void deleteAll();
 }

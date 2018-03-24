@@ -21,7 +21,7 @@ public class LocalForecastRepositoryImpl implements LocalForecastRepository {
 
     @Override
     public Forecast getCurrentForecastByCityName(String cityName) {
-        return forecastDatabase.forecastDao().getForecastByCity(cityName);
+        return forecastDatabase.forecastDao().getLastForecastForCity(cityName);
     }
 
     @Override
@@ -29,13 +29,24 @@ public class LocalForecastRepositoryImpl implements LocalForecastRepository {
         return forecastDatabase.forecastDao().getAllForecast();
     }
 
-    @Override
-    public Forecast getLastForecastForCity(String city) {
-        return forecastDatabase.forecastDao().getLastForecastForCity(city);
-    }
 
     @Override
     public void saveForecast(Forecast forecast) {
         forecastDatabase.forecastDao().insertForecast(new ForecastEntity(forecast));
     }
+
+    @Override
+    public void deleteAllForecasts() {
+        forecastDatabase.forecastDao().deleteAll();
+    }
+
+    @Override
+    public void updateForecast(Forecast forecast) {
+        ForecastEntity cachedForecast = forecastDatabase.forecastDao().getForecastByCity(forecast.getCity());
+        cachedForecast.update(forecast);
+
+        forecastDatabase.forecastDao().updateForecast(cachedForecast);
+        System.out.println("forecast recor dupdated");
+    }
+
 }

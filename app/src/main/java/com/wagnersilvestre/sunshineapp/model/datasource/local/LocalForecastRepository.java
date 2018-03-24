@@ -11,7 +11,10 @@ import java.util.List;
 public interface LocalForecastRepository {
     Forecast getCurrentForecastByCityName(String cityName);
     List<Forecast> getAllForecasts();
-    Forecast getLastForecastForCity(String city);
 
     void saveForecast(Forecast forecast);
+
+    void deleteAllForecasts();
+
+    void updateForecast(Forecast forecast);
 }

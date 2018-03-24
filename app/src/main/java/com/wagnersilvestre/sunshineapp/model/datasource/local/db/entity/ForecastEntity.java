@@ -63,6 +63,7 @@ public class ForecastEntity implements Forecast {
         this.city = forecast.getCity();
         this.temperature = forecast.getTemperature();
         this.weather = forecast.getWeather();
+        this.time = forecast.getTime();
     }
 
     public void setTemperature(double temperature) {
